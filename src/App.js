@@ -1,10 +1,9 @@
 function App() {
-    function handleClick(){
-        alert("Salem React!");
-    }
 
     return (
-        <button onClick={handleClick}>
+        <button onClick={function handleClick(){
+            alert("Hello World!");
+        }}>
             Click Me!
         </button>
     );
