@@ -13,7 +13,7 @@ function App() {
             <h1>{team.name}'s Todos</h1>
             <img
                 className="img-fluid"
-                src="https://en.wikipedia.org/wiki/File:Real_Madrid_CF.svg"
+                src="https://logowik.com/content/uploads/images/545_realmadridfc.jpg"
                 alt="Real Madrid"
             />
             <ul>
