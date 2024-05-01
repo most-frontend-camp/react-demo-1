@@ -1,18 +1,43 @@
-function Avatar() {
+import { getImageUrl} from './util.js';
+
+function Avatar({ person, size}) {
+    // доступные пропсы отсюда
     return (
         <img
             className="avatar"
-            src="https://www.vokrug.tv/pic/person/2/b/f/4/2bf448098b7badf3b37e87c510da29bc.jpeg"
-            alt="Lin Lanying"
-            width={100}
-            height={100}
+            src={getImageUrl(person)}
+            alt={person.name}
+            width={size}
+            height={size}
         />
-    );
+    )
 }
 
 function App() {
     return (
-        <Avatar />
+        <div>
+            <Avatar
+                size={100}
+                person={{
+                    name: 'Lin Lanying',
+                    imageId: '1bX5QH6'
+                }}
+            />
+            <Avatar
+                size={80}
+                person={{
+                    name: 'Lin Lanying',
+                    imageId: '1bX5QH6'
+                }}
+            />
+            <Avatar
+                size={50}
+                person={{
+                    name: 'Lin Lanying',
+                    imageId: '1bX5QH6'
+                }}
+            />
+        </div>
     );
 }
 
