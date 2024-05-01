@@ -1,8 +1,8 @@
 function App() {
 
     return (
-        <button onClick={function handleClick(){
-            alert("Hello World!");
+        <button onClick={() => {
+            alert("Salem React!");
         }}>
             Click Me!
         </button>
