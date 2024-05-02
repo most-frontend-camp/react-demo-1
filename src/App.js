@@ -1,55 +1,62 @@
 import { useState } from 'react';
+import { places } from './data.js';
+import { getImageUrl } from './utils.js';
 
-export default function Form() {
-    const [form, setForm] = useState({
-        firstName: 'Barbara',
-        lastName: 'Hepworth',
-        email: 'bhepworth@sculpture.com',
-    });
-
+export default function App() {
+    const [isLarge, setIsLarge] = useState(false);
+    const imageSize = isLarge ? 150 : 100;
     return (
         <>
             <label>
-                First name:
                 <input
-                    value={form.firstName}
+                    type="checkbox"
+                    checked={isLarge}
                     onChange={e => {
-                        setForm({
-                            ...form,
-                            firstName: e.target.value
-                        });
+                        setIsLarge(e.target.checked);
                     }}
                 />
+                Use large images
             </label>
-            <label>
-                Last name:
-                <input
-                    value={form.lastName}
-                    onChange={e => {
-                        setForm({
-                            ...form,
-                            lastName: e.target.value
-                        });
-                    }}
-                />
-            </label>
-            <label>
-                Email:
-                <input
-                    value={form.email}
-                    onChange={e => {
-                        setForm({
-                            ...form,
-                            email: e.target.value
-                        });
-                    }}
-                />
-            </label>
+            <hr />
+            <List imageSize={imageSize} />
+        </>
+    )
+}
+
+function List({ imageSize }) {
+    const listItems = places.map(place =>
+        <li key={place.id}>
+            <Place
+                place={place}
+                imageSize={imageSize}
+            />
+        </li>
+    );
+    return <ul>{listItems}</ul>;
+}
+
+function Place({ place, imageSize }) {
+    return (
+        <>
+            <PlaceImage
+                place={place}
+                imageSize={imageSize}
+            />
             <p>
-                {form.firstName}{' '}
-                {form.lastName}{' '}
-                ({form.email})
+                <b>{place.name}</b>
+                {': ' + place.description}
             </p>
         </>
+    );
+}
+
+function PlaceImage({ place, imageSize }) {
+    return (
+        <img
+            src={getImageUrl(place)}
+            alt={place.name}
+            width={imageSize}
+            height={imageSize}
+        />
     );
 }
