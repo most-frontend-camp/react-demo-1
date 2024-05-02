@@ -1,34 +1,54 @@
 import { useState } from 'react';
-import { sculptureList } from './data.js';
 
-export default function Gallery() {
-    // let index = 0;
-    const [index, setIndex] = useState(0);
+export default function Form() {
+    const [form, setForm] = useState({
+        firstName: 'Barbara',
+        lastName: 'Hepworth',
+        email: 'bhepworth@sculpture.com',
+    });
 
-    function handleClick() {
-        // index = index + 1;
-        setIndex(index +1);
-    }
-
-    let sculpture = sculptureList[index];
     return (
         <>
-            <button onClick={handleClick}>
-                Next
-            </button>
-            <h2>
-                <i>{sculpture.name} </i>
-                by {sculpture.artist}
-            </h2>
-            <h3>
-                ({index + 1} of {sculptureList.length})
-            </h3>
-            <img
-                src={sculpture.url}
-                alt={sculpture.alt}
-            />
+            <label>
+                First name:
+                <input
+                    value={form.firstName}
+                    onChange={e => {
+                        setForm({
+                            ...form,
+                            firstName: e.target.value
+                        });
+                    }}
+                />
+            </label>
+            <label>
+                Last name:
+                <input
+                    value={form.lastName}
+                    onChange={e => {
+                        setForm({
+                            ...form,
+                            lastName: e.target.value
+                        });
+                    }}
+                />
+            </label>
+            <label>
+                Email:
+                <input
+                    value={form.email}
+                    onChange={e => {
+                        setForm({
+                            ...form,
+                            email: e.target.value
+                        });
+                    }}
+                />
+            </label>
             <p>
-                {sculpture.description}
+                {form.firstName}{' '}
+                {form.lastName}{' '}
+                ({form.email})
             </p>
         </>
     );
