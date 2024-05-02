@@ -1,27 +1,11 @@
-# Intro to React
+# Practice
 
-## Lesson 2
+## Replace prop drilling with context
 
-### Steps
+In this example, toggling the checkbox changes the `imageSize` prop passed to each `<PlaceImage>`. 
 
-Сделаем пропсы в 2 шага
+The checkbox state is held in the top-level `App` component, but each `<PlaceImage>` needs to be aware of it.
 
-1. передать пропсы в child component
-2. прочитать пропсы внутри child component
+Currently, `App` passes `imageSize` to List, which passes it to each `Place`, which passes it to the `PlaceImage`. 
 
-### State
-
-Цель вывести сообщение 
-
-Сделаем это в 3 шага
-
-1. handleClick
-2. logic and add alert
-3. button 
-
-### State management
-
-1) Save the data between render stages
-2) Repeat the rendering - React component with new data
-
-useState
+Remove the `imageSize` prop, and instead pass it from the `App` component directly to `PlaceImage`.
